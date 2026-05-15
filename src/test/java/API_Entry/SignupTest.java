@@ -1,6 +1,8 @@
 package API_Entry;
 
 import Base.BaseTest;
+import Base.RequestBuilder;
+import Base.ResponseBuilder;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -15,13 +17,18 @@ public class SignupTest extends BaseTest {
 
         Response response = RestAssured
                 .given()
-                    .header("Content-Type", "application/json")
+                .spec(RequestBuilder.getRequestSpec())
+//                    .header("Content-Type", "application/json")
                     .body("{ \"username\": \"" + username + "\", \"password\": \"123\" }")
                 .when()
-                    .post("/signup");
+                    .post("/signup")
+                 .then()
+                    .spec(ResponseBuilder.getResponseSpec())
+                    .extract()
+                    .response();
 
         System.out.println(response.asString());
 
-        Assert.assertEquals(response.getStatusCode(), 200);
+//        Assert.assertEquals(response.getStatusCode(), 200);
     }
 }

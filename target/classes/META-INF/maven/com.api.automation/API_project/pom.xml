@@ -48,6 +48,12 @@
             <artifactId>hamcrest</artifactId>
             <version>2.2</version>
         </dependency>
+        
+        <dependency>
+           <groupId>com.aventstack</groupId>
+           <artifactId>extentreports</artifactId>
+           <version>5.1.1</version>
+        </dependency>
 
         <!-- Jackson (POJO mapping) -->
         <dependency>

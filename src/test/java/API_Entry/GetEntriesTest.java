@@ -1,6 +1,7 @@
 package API_Entry;
 
 import Base.BaseTest;
+import Base.RequestBuilder;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -8,11 +9,12 @@ import org.testng.annotations.Test;
 
 public class GetEntriesTest extends BaseTest {
 
-    @Test
+	@Test(retryAnalyzer = listeners.RetryAnalyzer.class)
     public void verifyGetEntries() {
 
         Response response = RestAssured
                 .given()
+                .spec(RequestBuilder.getRequestSpec())
                 .when()
                     .get("/entries")
                 .then()

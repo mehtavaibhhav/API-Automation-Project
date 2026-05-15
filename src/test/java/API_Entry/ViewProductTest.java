@@ -1,6 +1,7 @@
 package API_Entry;
 
 import Base.BaseTest;
+import Base.RequestBuilder;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -13,7 +14,8 @@ public class ViewProductTest extends BaseTest {
 
         Response response = RestAssured
                 .given()
-                    .header("Content-Type", "application/json")
+                .spec(RequestBuilder.getRequestSpec())
+//                    .header("Content-Type", "application/json") // mark due to request builder 
                     .body("{ \"id\": \"1\" }")
                 .when()
                     .post("/view");
