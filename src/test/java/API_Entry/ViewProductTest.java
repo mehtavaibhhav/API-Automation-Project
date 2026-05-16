@@ -11,6 +11,7 @@ public class ViewProductTest extends BaseTest {
 
     @Test
     public void verifyViewProduct() {
+    	
 
         Response response = RestAssured
                 .given()
